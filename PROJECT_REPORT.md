@@ -81,7 +81,7 @@ Combines LSTM and CNN predictions using:
 | Model | F1 | Precision | Recall | Accuracy |
 |-------|-----|-----------|--------|----------|
 | LSTM | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
-| CNN | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
+| CNN | 0.7143 | 0.8276 | 0.6284 | 0.9190 |
 | Ensemble | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
 | BERT | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
 
@@ -91,12 +91,12 @@ Combines LSTM and CNN predictions using:
 
 | Label | LSTM | CNN | Ensemble | BERT |
 |-------|------|-----|----------|------|
-| toxic | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
-| severe_toxic | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
-| obscene | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
-| threat | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
-| insult | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
-| identity_hate | 0.XXX | 0.XXX | 0.XXX | 0.XXX |
+| toxic | 0.XXX | 0.7687 | 0.XXX | 0.XXX |
+| severe_toxic | 0.XXX | 0.3504 | 0.XXX | 0.XXX |
+| obscene | 0.XXX | 0.7761 | 0.XXX | 0.XXX |
+| threat | 0.XXX | 0.3366 | 0.XXX | 0.XXX |
+| insult | 0.XXX | 0.6643 | 0.XXX | 0.XXX |
+| identity_hate | 0.XXX | 0.3654 | 0.XXX | 0.XXX |
 
 *Note: Fill in actual values after running all experiments*
 
@@ -105,7 +105,7 @@ Combines LSTM and CNN predictions using:
 | Model | Training Time | Parameters |
 |-------|--------------|------------|
 | LSTM | ~XX min | 1.5M |
-| CNN | ~XX min | 1.3M |
+| CNN | ~193 min (cpu), 15 min (gpu) | 1.1M |
 | BERT | ~XX min | 110M |
 
 *Note: Fill in actual training times after running all experiments*
