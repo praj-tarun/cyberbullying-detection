@@ -22,6 +22,12 @@ pip install -r requirements.txt
 
 ## Dataset
 
+**Cyberbullying Classification**
+- Source: https://www.kaggle.com/datasets/andrewmvd/cyberbullying-classification
+- 46017 Unique value (social media posts)
+- The data has been balanced in order to contain ~8000 of each class.
+- Labels: region, age, gender, ethinicity, not_cyberbullying, other_cyberbullying
+
 **Jigsaw Toxic Comment Classification Challenge**
 - Source: https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge
 - 160k Wikipedia comments (social media posts)
@@ -33,7 +39,7 @@ pip install -r requirements.txt
 # Install kaggle CLI
 pip install kaggle
 
-# Download (requires kaggle.json in ~/.kaggle/)
+# Download direct from Link(requires kaggle.json in ~/.kaggle/)
 kaggle competitions download -c jigsaw-toxic-comment-classification-challenge -p data/raw
 
 # Extract files to data/raw/
@@ -50,11 +56,17 @@ DL/
 │   └── utils.py            # Helper functions
 ├── notebooks/              # Jupyter notebooks
 │   ├── Preprocessing.ipynb
-│   ├── lstm_model.ipynb
-│   ├── cnn_model.ipynb
-│   ├── ensemble_model.ipynb
-│   ├── bert_model.ipynb
-│   └── lstm_cnn_experiments.ipynb
+│   ├── jigsaw_cnn.ipynb
+│   ├── jigsaw_rnn.ipynb
+│   ├── jigsaw_lstm.ipynb
+│   ├── jigsaw_bert.ipynb
+│   ├── cb_tweet_cnn.ipynb
+│   ├── cb_tweet_rnn.ipynb
+│   ├── cb_tweet_lstm.ipynb
+│   ├── cb_tweet_bert.ipynb
+│   ├── jigsaw_cnn_colab.ipynb
+│   ├── jigsaw_lstm_colab.ipynb
+│   └── jigsaw_bert_colab.ipynb
 ├── outputs/                # Results and artifacts
 │   ├── lstm_model.pt
 │   ├── cnn_model.pt
@@ -63,13 +75,13 @@ DL/
 │   └── label_cols.pkl
 ├── data/                   # Data directory
 │   └── raw/
+│       ├── cb_tweets.csv
 │       ├── train.csv
 │       ├── test.csv
 │       └── test_labels.csv
 ├── README.md
 ├── PROJECT_REPORT.md
-├── requirements.txt
-└── .gitignore
+└── requirements.txt
 ```
 
 ## File Descriptions
@@ -79,6 +91,7 @@ DL/
 **models.py** - Neural network architectures:
 - LSTMClassifier: Bidirectional LSTM (2 layers, 128 hidden units)
 - SimpleCNN: Multi-filter CNN (filter sizes: 3, 4, 5)
+- SimpleRNN: Simple RNN
 - BERTClassifier: Fine-tuned BERT for multi-label classification
 
 **train.py** - Training utilities:
@@ -97,11 +110,18 @@ DL/
 ### Notebooks (notebooks/)
 
 - **Preprocessing.ipynb**: Data exploration and analysis
-- **lstm_model.ipynb**: LSTM implementation and training
-- **cnn_model.ipynb**: CNN implementation and training
-- **ensemble_model.ipynb**: Ensemble methods (average, weighted, max)
-- **bert_model.ipynb**: BERT fine-tuning and evaluation
-- **lstm_cnn_experiments.ipynb**: Comparative experiments
+- **jigsaw_cnn.ipynb**: CNN implementation on local with 146K data
+- **jigsaw_rnn.ipynb**: RNN implementation on local with 146K data
+- **jigsaw_lstm.ipynb**: LSTM implementation on local with 146K data
+- **jigsaw_bert.ipynb**: BERT implementation on local with 146K data
+- **cb_tweet_cnn.ipynb**: CNN implementation on local with 46K data
+- **cb_tweet_rnn.ipynb**: RNN implementation on local with 46K data
+- **cb_tweet_lstm.ipynb**: LSTM implementation on local with 46K data
+- **cb_tweet_bert.ipynb**: BERT implementation on local with 46K data
+- **jigsaw_cnn_colab.ipynb**: CNN implementation on colab with 146K data
+- **jigsaw_lstm_colab.ipynb**: LSTM implementation on colab with 146K data
+- **jigsaw_bert_colab.ipynb**: BERT implementation on colab with 146K data
+
 
 ## Training
 
@@ -109,25 +129,6 @@ DL/
 
 Each notebook is self-contained and ready to run:
 
-```bash
-# LSTM model
-jupyter notebook notebooks/lstm_model.ipynb
-
-# CNN model
-jupyter notebook notebooks/cnn_model.ipynb
-
-# Ensemble model (requires LSTM and CNN trained first)
-jupyter notebook notebooks/ensemble_model.ipynb
-
-# BERT model
-jupyter notebook notebooks/bert_model.ipynb
-```
-
-### Using Training Script
-
-```bash
-python -m src.train
-```
 
 Trains LSTM model and saves to `outputs/best_model.pt`
 
